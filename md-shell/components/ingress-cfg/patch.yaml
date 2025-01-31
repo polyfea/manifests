@@ -1,0 +1,8 @@
+
+apiVersion: polyfea.github.io/v1alpha1
+kind: MicroFrontendClass
+metadata:
+  name: md-shell
+spec:
+  routing:
+    ingressClass: ${INGRESS_CLASS:=nginx}

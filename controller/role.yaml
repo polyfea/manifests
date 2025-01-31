@@ -2,7 +2,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: manager-role
+  name: polyfea-controller
 rules:
 - apiGroups:
   - ""
@@ -51,12 +51,15 @@ rules:
   - get
   - list
   - watch
+  - patch
+  - update
 - apiGroups:
   - polyfea.github.io
   resources:
   - microfrontendclasses/finalizers
   verbs:
   - update
+  - patch
 - apiGroups:
   - polyfea.github.io
   resources:
@@ -73,12 +76,15 @@ rules:
   - get
   - list
   - watch
+  - patch
+  - update
 - apiGroups:
   - polyfea.github.io
   resources:
   - microfrontends/finalizers
   verbs:
   - update
+  - patch
 - apiGroups:
   - polyfea.github.io
   resources:
@@ -95,12 +101,15 @@ rules:
   - get
   - list
   - watch
+  - patch
+  - update
 - apiGroups:
   - polyfea.github.io
   resources:
   - webcomponents/finalizers
   verbs:
   - update
+  - patch
 - apiGroups:
   - polyfea.github.io
   resources:

@@ -1,4 +1,7 @@
+namespace: polyfea
+
 resources:
+- namespace.yaml
 - git-repository.yaml
 - controller.kustomization.yaml
 - material-shell.kustomization.yaml

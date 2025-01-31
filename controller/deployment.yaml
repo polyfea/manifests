@@ -48,12 +48,17 @@ spec:
         runAsNonRoot: true
       containers:
       - name: polyfea-controller
-        image: ghcr.io/polyfea/polyfea-controller
+        image: ghcr.io/polyfea/polyfea-controller:v0.1.6
         command:
         - /manager
         args:
         - --leader-elect
         
+        envFrom:
+        - configMapRef:
+            name: otel-params
+            optional: true
+
         ports:
         - name: http
           containerPort: 8082

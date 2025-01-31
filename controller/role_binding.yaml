@@ -3,7 +3,7 @@ kind: ClusterRoleBinding
 metadata:
   labels:
     app.kubernetes.io/name: clusterrolebinding
-    app.kubernetes.io/instance: manager-rolebinding
+    app.kubernetes.io/instance: polyfea-controller
     app.kubernetes.io/component: rbac
     app.kubernetes.io/created-by: polyfea-controller
     app.kubernetes.io/part-of: polyfea-controller
@@ -12,7 +12,8 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: manager-role
+  name: polyfea-controller
 subjects:
 - kind: ServiceAccount
-  name: controller-manager
+  name: polyfea-controller
+  namespace: polyfea

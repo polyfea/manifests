@@ -1,0 +1,12 @@
+apiVersion: polyfea.github.io/v1alpha1
+kind: MicroFrontendClass
+metadata:
+  name: md-shell
+spec:
+  title: ${APP_TITLE:=Polyfea Microfrontend MD Shell}
+  baseUri: ${APP_BASE_URI:=/fea}
+  progressiveWebApp:
+    webAppManifest:
+      name: ${APP_TITLE:=Polyfea Microfrontend MD Shell}
+      start_url: ${APP_BASE_URI:=/fea}
+  cspHeader: ${CSP_HEADER:=default-src 'self'; font-src 'self'; script-src 'strict-dynamic' 'nonce-\\{NONCE_VALUE\\}'; worker-src 'self'; manifest-src 'self'; style-src 'self' 'strict-dynamic' 'nonce-\\{NONCE_VALUE\\}'; style-src-attr 'self' 'unsafe-inline'; img-src *;}

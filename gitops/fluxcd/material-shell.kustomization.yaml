@@ -1,0 +1,23 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: material-shell
+  namespace: polyfea
+spec:
+  dependsOn:
+    - name: polyfea-controller  
+  interval: 30m
+  path: md-shell
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: polyfea-gitops-repository
+  # patch to enable postbuild configuration
+  components:
+    - ./components/postbuild
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: polyfea-shell-cfg
+        optional: true
+    

@@ -7,5 +7,5 @@ spec:
   interval: 30m0s
   ref:
     branch: main
-  timeout: 1m0s
+  timeout: 1m30s
   url: https://github.com/polyfea/manifests
