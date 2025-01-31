@@ -1,0 +1,90 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    app.kubernetes.io/name: namespace
+    app.kubernetes.io/instance: polyfea
+    app.kubernetes.io/created-by: polyfea-controller
+    app.kubernetes.io/part-of: polyfea-controller
+    app.kubernetes.io/managed-by: kustomize
+  name: polyfea
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: polyfea-controller
+  labels:
+    app.kubernetes.io/name: deployment
+    app.kubernetes.io/instance: polyfea-controller
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/created-by: polyfea-controller
+    app.kubernetes.io/part-of: polyfea-controller
+    app.kubernetes.io/managed-by: kustomize
+spec:
+  selector:
+    matchLabels:
+      pod: polyfea-controller
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        pod: polyfea-controller
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                - key: kubernetes.io/arch
+                  operator: In
+                  values:
+                    - amd64
+                    - arm64
+                - key: kubernetes.io/os
+                  operator: In
+                  values:
+                    - linux
+      securityContext:
+        runAsNonRoot: true
+      containers:
+      - name: polyfea-controller
+        image: ghcr.io/polyfea/polyfea-controller
+        command:
+        - /manager
+        args:
+        - --leader-elect
+        
+        ports:
+        - name: http
+          containerPort: 8082
+          protocol: TCP
+        
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+              - "ALL"
+
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8081
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: 8081
+          initialDelaySeconds: 5
+          periodSeconds: 10
+
+        resources:
+          limits:
+            cpu: 500m
+            memory: 128Mi
+          requests:
+            cpu: 10m
+            memory: 64Mi
+
+      serviceAccountName: polyfea-controller
+      terminationGracePeriodSeconds: 10

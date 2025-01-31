@@ -1,0 +1,16 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: polyfea-controller
+  namespace: polyfea
+spec:
+  wait: true
+
+  interval: 30m
+  path: controller
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: polyfea-gitops-repository
+
+  

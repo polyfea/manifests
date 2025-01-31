@@ -1,0 +1,8 @@
+
+resources:
+- microfrontends.yaml
+- webcomponents.yaml
+- microfrontendclasses.yaml
+
+configurations:
+- kustomizeconfig.yaml

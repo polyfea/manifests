@@ -1,0 +1,10 @@
+apiVersion: polyfea.github.io/v1alpha1
+kind: MicroFrontend
+metadata:
+  name: polyfea-md-shell
+spec:
+  frontendClass: fea
+  service: http://polyfea-md-shell
+  modulePath: md-shell.esm.js
+  dependsOn:
+    - material-design

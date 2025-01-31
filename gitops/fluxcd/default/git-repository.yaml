@@ -1,0 +1,11 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: polyfea-gitops-repository
+  namespace: polyfea
+spec:
+  interval: 30m0s
+  ref:
+    branch: main
+  timeout: 1m0s
+  url: https://github.com/polyfea/manifests

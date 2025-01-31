@@ -1,0 +1,18 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: polyfea-controller
+  labels:
+    app.kubernetes.io/name: namespace
+    app.kubernetes.io/instance: polyfea
+    app.kubernetes.io/created-by: polyfea-controller
+    app.kubernetes.io/part-of: polyfea-controller
+    app.kubernetes.io/managed-by: kustomize
+spec:  
+  selector:
+    pod: polyfea-controller
+  ports:
+  - name: webserver
+    protocol: TCP
+    port: 80
+    targetPort: http
