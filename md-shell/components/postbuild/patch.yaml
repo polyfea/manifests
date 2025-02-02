@@ -9,4 +9,4 @@ spec:
     webAppManifest:
       name: ${APP_TITLE:=Polyfea Microfrontend MD Shell}
       start_url: ${APP_BASE_URI:=/fea}
-  cspHeader: ${CSP_HEADER:=default-src 'self'; font-src 'self'; script-src 'strict-dynamic' 'nonce-\{NONCE_VALUE\}'; worker-src 'self'; manifest-src 'self'; style-src 'self' 'strict-dynamic' 'nonce-\{NONCE_VALUE\}'; style-src-attr 'self' 'unsafe-inline'; img-src *;}
+  cspHeader: ${CSP_HEADER:=null}
