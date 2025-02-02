@@ -6,11 +6,17 @@ metadata:
 spec:
   wait: true
 
-  interval: 30m
+  interval: 3m
   path: controller
+  components:
+    - ./components/postbuild
   prune: true
   sourceRef:
     kind: GitRepository
     name: polyfea-gitops-repository
 
-  
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: polyfea-shell-cfg
+        optional: true

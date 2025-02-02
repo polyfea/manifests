@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: polyfea-controller
+spec:  
+  type: ${SERVICE_TYPE:=ClusterIP}
+  ports:
+  - name: webserver
+    protocol: TCP
+    port: 80
+    targetPort: http
+    nodePort: ${NODE_PORT:=null}

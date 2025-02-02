@@ -97,15 +97,7 @@ Similar to above, but patches material shell Microfrontend class to enable custo
       #     style-src 'self' 'strict-dynamic' 'nonce-{NONCE_VALUE}'; 
       #     style-src-attr 'self' 'unsafe-inline'; 
       #     img-src *;
-      ### depending if you use Gateway API or Ingress API, uncomment the respective section
-      # routing:
-          # Gateway API
-          # parentRefs:
-          #    - kind: Gateway
-          #      name: my-gateway
-          #      namespace: gw-namespace
-          # Ingress API
-          # ingressClass: nginx
+     
   ```
 
 * Deploy `my-polyfea` folder
@@ -132,17 +124,6 @@ This is a more advanced deployment with FlugCD GitOps. It assumes you have a Flu
   resources:
   - https://github.com/polyfea/manifests//gitops/fluxcd
 
-  # uncomment if you want polyfea controller to manage HttpRoute or Ingress resources
-  # patches:
-  # - target:
-  #     kind: Kustomization
-  #     name: material-shell
-  #     namespace: polyfea
-  #   patch: |-
-  #     - op: add
-  #       path: /spec/components/-
-  #       value: ./components/gateway-cfg # or ./components/ingress-cfg
-
   # This ConfigMap is used by postBuild event of FluxCD to update the configuration of the material shell
   configMapGenerator:
   - name: polyfea-shell-cfg
@@ -152,16 +133,6 @@ This is a more advanced deployment with FlugCD GitOps. It assumes you have a Flu
     literals:
     - APP_TITLE=My Web App Title
     - APP_BASE_URI=/fea
-    
-    # uncomment if you want custom CSP header
-    # - CSP_HEADER=...;
-    
-    # uncomment if you want to use Gateway API 
-    # - GATEWAY_NAME=my-gateway
-    # - GATEWAY_NAMESPACE=gw-namespace
-
-    # uncomment if you want to use Ingress API
-    # - INGRESS_CLASS=nginx
   ```
 
 * Deploy `my-polyfea` folder

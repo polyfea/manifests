@@ -6,7 +6,7 @@ metadata:
 spec:
   dependsOn:
     - name: polyfea-controller  
-  interval: 30m
+  interval: 3m
   path: md-shell
   prune: true
   sourceRef:
