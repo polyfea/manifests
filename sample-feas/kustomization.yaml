@@ -7,5 +7,5 @@ resources:
 - earth.webcomponent.yaml
 
 labels:
-  pairs:
-    polyfea.github.io/feature-set: polyfea-md-shell
+  - pairs:
+      polyfea.github.io/feature-set: polyfea-md-shell
