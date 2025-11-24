@@ -2,13 +2,16 @@ apiVersion: polyfea.github.io/v1alpha1
 kind: WebComponent
 metadata:
   name: polyfea-md-shell
+  labels:
+    app.kubernetes.io/name: polyfea-md-shell-samples
+    app.kubernetes.io/instance: polyfea
+    app.kubernetes.io/version: "1.0"
 spec:
   microFrontend: polyfea-md-shell
   element: polyfea-md-shell
   attributes: 
     - name: application-headline
-      # change to your application name
-      value: Polyfea Shell Application
+      value: "Polyfea Shell Application"
   displayRules:
     - anyOf:
       - context-name: shell

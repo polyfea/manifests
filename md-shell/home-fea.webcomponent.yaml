@@ -2,6 +2,10 @@ apiVersion: polyfea.github.io/v1alpha1
 kind: WebComponent
 metadata:
   name: home-fea
+  labels:
+    app.kubernetes.io/name: polyfea-md-shell-samples
+    app.kubernetes.io/instance: polyfea
+    app.kubernetes.io/version: "1.0"
 spec:
   microFrontend: polyfea-md-shell
   element: polyfea-md-app
@@ -16,9 +20,9 @@ spec:
       value: home
     - name: href
       value: ./
-  priority: 100 # show as the first in the navigation
+  priority: 100
   displayRules:
     - anyOf:
       - context-name: rail-content
       - context-name: drawer-content
-      - context-name: navigation-content 
+      - context-name: navigation-content

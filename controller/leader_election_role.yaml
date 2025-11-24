@@ -1,15 +1,11 @@
-# permissions to do leader election.
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
+  name: polyfea-controller-leader-election
   labels:
-    app.kubernetes.io/name: role
-    app.kubernetes.io/instance: leader-election-role
-    app.kubernetes.io/component: rbac
-    app.kubernetes.io/created-by: polyfea-controller
-    app.kubernetes.io/part-of: polyfea-controller
-    app.kubernetes.io/managed-by: kustomize
-  name: leader-election-role
+    app.kubernetes.io/name: polyfea-controller
+    app.kubernetes.io/instance: polyfea
+    app.kubernetes.io/version: "v0.4.1"
 rules:
 - apiGroups:
   - ""

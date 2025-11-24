@@ -1,8 +1,11 @@
----
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: polyfea-controller
+  name: polyfea-controller-manager
+  labels:
+    app.kubernetes.io/name: polyfea-controller
+    app.kubernetes.io/instance: polyfea
+    app.kubernetes.io/version: "v0.4.1"
 rules:
 - apiGroups:
   - ""
@@ -20,99 +23,32 @@ rules:
   - list
   - watch
 - apiGroups:
-  - gateway.networking.k8s.io
-  resources:
-  - httproutes
-  verbs:
-  - create
-  - delete
-  - get
-  - list
-  - patch
-  - update
-  - watch
-- apiGroups:
-  - networking.k8s.io
-  resources:
-  - ingresses
-  verbs:
-  - create
-  - delete
-  - get
-  - list
-  - patch
-  - update
-  - watch
-- apiGroups:
   - polyfea.github.io
   resources:
   - microfrontendclasses
+  - microfrontends
+  - webcomponents
   verbs:
+  - create
+  - delete
   - get
   - list
-  - watch
   - patch
   - update
+  - watch
 - apiGroups:
   - polyfea.github.io
   resources:
   - microfrontendclasses/finalizers
+  - microfrontends/finalizers
+  - webcomponents/finalizers
   verbs:
   - update
-  - patch
 - apiGroups:
   - polyfea.github.io
   resources:
   - microfrontendclasses/status
-  verbs:
-  - get
-  - patch
-  - update
-- apiGroups:
-  - polyfea.github.io
-  resources:
-  - microfrontends
-  verbs:
-  - get
-  - list
-  - watch
-  - patch
-  - update
-- apiGroups:
-  - polyfea.github.io
-  resources:
-  - microfrontends/finalizers
-  verbs:
-  - update
-  - patch
-- apiGroups:
-  - polyfea.github.io
-  resources:
   - microfrontends/status
-  verbs:
-  - get
-  - patch
-  - update
-- apiGroups:
-  - polyfea.github.io
-  resources:
-  - webcomponents
-  verbs:
-  - get
-  - list
-  - watch
-  - patch
-  - update
-- apiGroups:
-  - polyfea.github.io
-  resources:
-  - webcomponents/finalizers
-  verbs:
-  - update
-  - patch
-- apiGroups:
-  - polyfea.github.io
-  resources:
   - webcomponents/status
   verbs:
   - get

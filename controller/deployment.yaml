@@ -1,75 +1,51 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  labels:
-    app.kubernetes.io/name: namespace
-    app.kubernetes.io/instance: polyfea
-    app.kubernetes.io/created-by: polyfea-controller
-    app.kubernetes.io/part-of: polyfea-controller
-    app.kubernetes.io/managed-by: kustomize
-  name: polyfea
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: polyfea-controller
   labels:
-    app.kubernetes.io/name: deployment
-    app.kubernetes.io/instance: polyfea-controller
-    app.kubernetes.io/component: controller
-    app.kubernetes.io/created-by: polyfea-controller
-    app.kubernetes.io/part-of: polyfea-controller
-    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: polyfea-controller
+    app.kubernetes.io/instance: polyfea
+    app.kubernetes.io/version: "v0.4.1"
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      pod: polyfea-controller
-  replicas: 1
+      app.kubernetes.io/name: polyfea-controller
+      app.kubernetes.io/instance: polyfea
   template:
     metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container: polyfea-controller
       labels:
-        pod: polyfea-controller
+        app.kubernetes.io/name: polyfea-controller
+        app.kubernetes.io/instance: polyfea
     spec:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                - key: kubernetes.io/arch
-                  operator: In
-                  values:
-                    - amd64
-                    - arm64
-                - key: kubernetes.io/os
-                  operator: In
-                  values:
-                    - linux
+      serviceAccountName: polyfea-controller
       securityContext:
         runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
       containers:
       - name: polyfea-controller
-        image: ghcr.io/polyfea/polyfea-controller:v0.1.6
+        image: "ghcr.io/polyfea/polyfea-controller:v0.4.1"
+        imagePullPolicy: IfNotPresent
         command:
         - /manager
         args:
         - --leader-elect
-        
-        envFrom:
-        - configMapRef:
-            name: otel-params
-            optional: true
-
+        - --health-probe-bind-address=:8081
+        env:
+        - name: POLYFEA_WEB_SERVER_PORT
+          value: "8082"
         ports:
         - name: http
           containerPort: 8082
           protocol: TCP
-        
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
             drop:
-              - "ALL"
-
+            - ALL
         livenessProbe:
           httpGet:
             path: /healthz
@@ -82,7 +58,6 @@ spec:
             port: 8081
           initialDelaySeconds: 5
           periodSeconds: 10
-
         resources:
           limits:
             cpu: 500m
@@ -90,6 +65,3 @@ spec:
           requests:
             cpu: 10m
             memory: 64Mi
-
-      serviceAccountName: polyfea-controller
-      terminationGracePeriodSeconds: 10

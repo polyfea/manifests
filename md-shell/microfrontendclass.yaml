@@ -2,10 +2,15 @@ apiVersion: polyfea.github.io/v1alpha1
 kind: MicroFrontendClass
 metadata:
   name: md-shell
-  
+  labels:
+    app.kubernetes.io/name: polyfea-md-shell-samples
+    app.kubernetes.io/instance: polyfea
+    app.kubernetes.io/version: "1.0"
 spec:
   title: "Polyfea Microfrontend MD Shell"
   baseUri: "/fea"
+  namespacePolicy:
+    from: All
   extraMetaTags:
   - name: viewport
     content: width=device-width, initial-scale=1

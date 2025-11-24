@@ -2,19 +2,21 @@ apiVersion: polyfea.github.io/v1alpha1
 kind: MicroFrontend
 metadata:
   name: material-design
+  labels:
+    app.kubernetes.io/name: polyfea-md-shell-samples
+    app.kubernetes.io/instance: polyfea
+    app.kubernetes.io/version: "1.0"
 spec:
   frontendClass: md-shell
-  service: http://polyfea-md-shell
-  modulePath: md/material-all.mjs # md/material-common.mjs
+  service:
+    name: polyfea-md-shell
+  modulePath: md/material-all.mjs
   staticPaths:
-    # fonts
     - kind: stylesheet
       path: md/fonts/material-symbols/style.css
     - kind: stylesheet
       path: md/fonts/roboto/style.css
-    # color scheme
     - kind: stylesheet
       path: md/theme/tokens.css
-    # dark/light theme mapping and :root setup 
     - kind: stylesheet
       path: md/theme/theme.css

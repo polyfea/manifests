@@ -2,9 +2,14 @@ apiVersion: polyfea.github.io/v1alpha1
 kind: MicroFrontend
 metadata:
   name: polyfea-md-shell
+  labels:
+    app.kubernetes.io/name: polyfea-md-shell-samples
+    app.kubernetes.io/instance: polyfea
+    app.kubernetes.io/version: "1.0"
 spec:
   frontendClass: md-shell
-  service: http://polyfea-md-shell
+  service:
+    name: polyfea-md-shell
   modulePath: md-shell.esm.js
   dependsOn:
     - material-design

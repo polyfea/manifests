@@ -5,6 +5,7 @@ namespace: polyfea
 
 resources:
 - ../crds
+- namespace.yaml
 - deployment.yaml
 - service.yaml
 - service_account.yaml
