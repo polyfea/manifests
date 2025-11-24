@@ -2,27 +2,35 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: &POD polyfea-md-shell
+  labels:
+    app.kubernetes.io/name: polyfea-md-shell-samples
+    app.kubernetes.io/instance: polyfea
+    app.kubernetes.io/version: "1.0"
 spec:
   replicas: 1
   selector:
     matchLabels:
-        pod: *POD
+      pod: *POD
+      app.kubernetes.io/name: polyfea-md-shell-samples
+      app.kubernetes.io/instance: polyfea
   template:
     metadata:
-      labels: 
+      labels:
         pod: *POD
+        app.kubernetes.io/name: polyfea-md-shell-samples
+        app.kubernetes.io/instance: polyfea
     spec:
       containers:
       - name: *POD
-        image: ghcr.io/polyfea/md-shell:latest
+        image: "ghcr.io/polyfea/md-shell:latest"
         imagePullPolicy: IfNotPresent
         ports:
           - name: http
             containerPort: 7105
         resources:
-            requests:
-                memory: "16M"
-                cpu: "0.01"
-            limits:
-                memory: "320M"
-                cpu: "0.2"
+          limits:
+            cpu: "0.2"
+            memory: 320M
+          requests:
+            cpu: "0.01"
+            memory: 16M
