@@ -5,13 +5,21 @@ metadata:
   labels:
     app.kubernetes.io/name: polyfea-md-shell-samples
     app.kubernetes.io/instance: polyfea
-    app.kubernetes.io/version: "1.0"
+    app.kubernetes.io/version: "2.0.4"
 spec:
   microFrontend: polyfea-md-shell
   element: polyfea-md-shell
   attributes: 
     - name: application-headline
       value: "Polyfea Shell Application"
+    - name: locale-menu
+      value: "true"
+    - name: locales
+      value: '"en", "sk", "cz", "de", "es", "fr"]'
+    - name: theme-menu
+      value: "true"
+    - name: absolute-position
+      value: "true"
   displayRules:
     - anyOf:
       - context-name: shell
