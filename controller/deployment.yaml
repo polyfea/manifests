@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/name: polyfea-controller
     app.kubernetes.io/instance: polyfea
-    app.kubernetes.io/version: "v0.5.5"
+    app.kubernetes.io/version: "v0.5.7"
 spec:
   replicas: 1
   selector:
@@ -27,7 +27,7 @@ spec:
           type: RuntimeDefault
       containers:
       - name: polyfea-controller
-        image: "ghcr.io/polyfea/polyfea-controller:v0.5.5"
+        image: "ghcr.io/polyfea/polyfea-controller:v0.5.7"
         imagePullPolicy: IfNotPresent
         command:
         - /manager
