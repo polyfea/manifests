@@ -6,6 +6,6 @@ metadata:
 spec:
   interval: 30m0s
   ref:
-    branch: main
+    branch: update-controller
   timeout: 1m30s
   url: https://github.com/polyfea/manifests
