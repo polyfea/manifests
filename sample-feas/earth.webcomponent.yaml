@@ -41,7 +41,8 @@ metadata:
     app.kubernetes.io/instance: polyfea
     app.kubernetes.io/version: "2.0.4"
 spec:
-  microFrontend: polyfea-md-shell
+  microFrontend: 
+    name: polyfea-md-shell
   element: img
   attributes: 
     - name: src
