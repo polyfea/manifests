@@ -5,6 +5,7 @@ metadata:
 spec:
   microFrontend: 
     name: polyfea-md-shell
+    namespace: polyfea
   element: polyfea-md-app
   attributes: 
     - name: headline

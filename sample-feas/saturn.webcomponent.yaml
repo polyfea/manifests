@@ -5,6 +5,7 @@ metadata:
 spec:
   microFrontend: 
     name: polyfea-md-shell
+    namespace: polyfea
   element: polyfea-md-app
   attributes: 
     - name: headline
@@ -34,6 +35,7 @@ apiVersion: polyfea.github.io/v1alpha1
 kind: WebComponent
 metadata:
   name: saturn-fea-content
+  namespace: polyfea
 spec:
   microFrontend: 
     name: polyfea-md-shell
