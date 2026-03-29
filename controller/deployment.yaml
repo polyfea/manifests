@@ -27,7 +27,7 @@ spec:
           type: RuntimeDefault
       containers:
       - name: polyfea-controller
-        image: "ghcr.io/polyfea/polyfea-controller:crd-namespacing-fixes.20260329.1842"  #v0.8.0"
+        image: "ghcr.io/polyfea/polyfea-controller:v0.8.0"
         imagePullPolicy: IfNotPresent
         command:
         - /manager
