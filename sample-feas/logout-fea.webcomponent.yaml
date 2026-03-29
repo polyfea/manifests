@@ -3,7 +3,8 @@ kind: WebComponent
 metadata:
   name: logout-fea
 spec:
-  microFrontend: polyfea-md-shell
+  microFrontend: 
+    name: polyfea-md-shell
   element: polyfea-md-app
   attributes: 
     - name: headline

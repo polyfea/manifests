@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/name: polyfea-controller
     app.kubernetes.io/instance: polyfea
-    app.kubernetes.io/version: "v0.7.1"
+    app.kubernetes.io/version: "v0.8.0"
 spec:
   replicas: 1
   selector:
@@ -27,7 +27,7 @@ spec:
           type: RuntimeDefault
       containers:
       - name: polyfea-controller
-        image: "ghcr.io/polyfea/polyfea-controller:v0.7.1"
+        image: "ghcr.io/polyfea/polyfea-controller:crd-namespacing-fixes.20260329.1842"  #v0.8.0"
         imagePullPolicy: IfNotPresent
         command:
         - /manager

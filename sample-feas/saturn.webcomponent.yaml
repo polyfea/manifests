@@ -3,7 +3,8 @@ kind: WebComponent
 metadata:
   name: saturn-fea-link
 spec:
-  microFrontend: polyfea-md-shell
+  microFrontend: 
+    name: polyfea-md-shell
   element: polyfea-md-app
   attributes: 
     - name: headline
@@ -34,7 +35,8 @@ kind: WebComponent
 metadata:
   name: saturn-fea-content
 spec:
-  microFrontend: polyfea-md-shell
+  microFrontend: 
+    name: polyfea-md-shell
   element: img
   attributes: 
     - name: src
