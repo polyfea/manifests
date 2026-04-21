@@ -23,11 +23,18 @@ spec:
         - src: "https://avatars.githubusercontent.com/u/154217229?s=400&u=ae64608e9686a2405680676a15800dc2b6df32bb&v=4"
           sizes: "128x128"
           type: "image/png"
-    cacheOptions:
-      preCache:
-        - url: polyfea/boot.mjs
-      cacheRoutes:
-        - pattern: .*.jpg
+    serviceWorker:
+      scope: "/fea"
+      cacheOptions:
+        preCache:
+          - url: polyfea/boot.mjs
+        cacheRoutes:
+          - pattern: .*.jpg
+          - pattern: .*.png
+          - pattern: .*.svg
+          - pattern: .*.css
+          - pattern: .*.woff2
+          - pattern: .*.woff
   cspHeader: >-
     default-src 'self'; font-src 'self'; script-src 'strict-dynamic'
     'nonce-{NONCE_VALUE}'; worker-src 'self'; manifest-src 'self'; style-src
