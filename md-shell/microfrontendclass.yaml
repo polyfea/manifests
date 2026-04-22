@@ -25,16 +25,16 @@ spec:
           type: "image/png"
     serviceWorker:
       scope: "/fea"
-      cacheOptions:
-        preCache:
-          - url: polyfea/boot.mjs
-        cacheRoutes:
-          - pattern: .*.jpg
-          - pattern: .*.png
-          - pattern: .*.svg
-          - pattern: .*.css
-          - pattern: .*.woff2
-          - pattern: .*.woff
+      
+      preCache:
+        - url: polyfea/boot.mjs
+      cacheRoutes:
+        - pattern: .*.jpg
+        - pattern: .*.png
+        - pattern: .*.svg
+        - pattern: .*.css
+        - pattern: .*.woff2
+        - pattern: .*.woff
   cspHeader: >-
     default-src 'self'; font-src 'self'; script-src 'strict-dynamic'
     'nonce-{NONCE_VALUE}'; worker-src 'self'; manifest-src 'self'; style-src
