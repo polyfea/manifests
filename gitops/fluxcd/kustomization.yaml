@@ -2,7 +2,7 @@ namespace: polyfea
 
 resources:
 - namespace.yaml
-# - git-repository.yaml - consumer responsibility to define repository with specific tag; see the repository yaml for sample on using the latest development version
+- git-repository.yaml
 - controller.kustomization.yaml
 - material-shell.kustomization.yaml
  
